@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Tag, Plus, RefreshCw, Download, Search } from "lucide-react";
 
 import { QnovateShell } from "../components/qnovate/QnovateShell";
@@ -32,7 +32,17 @@ const VIEW_OPTS = [
 
 export default function PricingList() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const session = getSession();
+
+  useEffect(() => {
+    if (searchParams.get("create") === "1") {
+      setCreateOpen(true);
+      searchParams.delete("create");
+      setSearchParams(searchParams, { replace: true });
+    }
+    // eslint-disable-next-line
+  }, []);
 
   const [pricings,    setPricings]    = useState([]);
   const [loading,     setLoading]     = useState(true);
