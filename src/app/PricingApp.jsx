@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PricingList from "./pages/PricingList";
 import PricingDetail from "./pages/PricingDetail";
 import PricingNew from "./pages/PricingNew";
+import InvoicesList from "./pages/InvoicesList";
+import InvoiceDetail from "./pages/InvoiceDetail";
 
 /**
  * Hosts the React Router app inside the TanStack catch-all route.
@@ -15,6 +17,11 @@ export default function PricingApp() {
         <Route path="/pricing"         element={<PricingList />} />
         <Route path="/pricing/new"     element={<PricingNew />} />
         <Route path="/pricing/:id"     element={<PricingDetail />} />
+
+        {/* Invoices module */}
+        <Route path="/invoices"        element={<InvoicesList />} />
+        <Route path="/invoices/:id"    element={<InvoiceDetail />} />
+
         <Route path="*"                element={<Navigate to="/pricing" replace />} />
       </Routes>
     </BrowserRouter>
