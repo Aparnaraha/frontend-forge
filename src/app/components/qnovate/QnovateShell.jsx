@@ -1,6 +1,6 @@
 import { QnovateHeader } from "../qnovate/QnovateHeader";
 import { QnovateTabs, HOME_TAB } from "../qnovate/QnovateTabs";
-import { Tag, User } from "lucide-react";
+import { Tag, User, Receipt } from "lucide-react";
 import { getSession } from "../../lib/auth";
 
 /**
@@ -13,7 +13,8 @@ export function QnovateShell({ extraTabs = [], children }) {
 
   const tabs = [
     HOME_TAB,
-    { key: "pricing", label: "Pricing", to: "/pricing", icon: Tag, closable: true },
+    { key: "pricing",  label: "Pricing",  to: "/pricing",  icon: Tag,     closable: true },
+    { key: "invoices", label: "Invoices", to: "/invoices", icon: Receipt, closable: true },
     ...extraTabs,
   ];
 
